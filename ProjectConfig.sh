@@ -60,13 +60,13 @@ Inc_Build() {
 		echo "Cmake(C)/Meson(Mn)/Makefile(Mk)/Ninja(N) ?"
 		read Build_System
 
-		if [ $Build_System = C ]; then
+		if [ $Build_System = "C" ]; then
 			touch CMakeLists.txt
-		elif [ $Build_System = Mn ]; then
+		elif [ $Build_System = "Mn" ]; then
 			touch meson.build
-		elif [ $Build_System = Mk]; then
+		elif [ $Build_System = "Mk"]; then
 			touch Makefile
-		elif [ $Build_System = N ]; then
+		elif [ $Build_System = "N" ]; then
 			touch ninja.build
 		fi
 	fi
