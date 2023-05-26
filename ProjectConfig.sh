@@ -52,22 +52,31 @@ Check_Project() {
         Check_Project $Project
     else
         Project=$1
-    fi
+	fi
 }
 
 Inc_Build() {
-	if [ $Include_Build = y ]; then
+	if [ $Include_Build = y ]
+	then
 		echo "Cmake(C)/Meson(Mn)/Makefile(Mk)/Ninja(N) ?"
 		read Build_System
 
-		if [ $Build_System = "C" ]; then
+		if [ $Build_System = "C" ]
+		then
 			touch CMakeLists.txt
-		elif [ $Build_System = "Mn" ]; then
+            exit 0
+		elif [ $Build_System = "Mn" ]
+		then
 			touch meson.build
-		elif [ $Build_System = "Mk"]; then
+            exit 0
+		elif [ $Build_System = "Mk"]
+		then
 			touch Makefile
-		elif [ $Build_System = "N" ]; then
+            exit 0
+		elif [ $Build_System = "N" ]
+		then
 			touch ninja.build
+            exit 0
 		fi
 	fi
 }
@@ -75,17 +84,20 @@ Inc_Build() {
 Check_Project $Project
 mkdir $Project
 
-if [ $choice = 1 ]; then
+if [ $choice = 1 ]
+then
     cd $Project
     Standard_Tree
     Inc_Build
     echo "Standard directory settings success"
-elif [ $choice = 2 ]; then
+elif [ $choice = 2 ]
+then
     cd $Project
     Minimal_Tree
     Inc_Build
     echo "Minimal directory settings success"
-elif [ $choice = 3 ]; then
+elif [ $choice = 3 ]
+then
     cd $Project
     Complex_Tree
     Inc_Build
